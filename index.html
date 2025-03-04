@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classroom</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #000;
+      }
+
+      /* Background div instead of iframe */
+      #background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+      }
+
+      .auth-container {
+        position: absolute;
+        top: 30%; /* Adjusted for better centering */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 30px; /* Increased padding to make it taller */
+        border-radius: 10px;
+        width: 250px;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        z-index: 1;
+      }
+
+      .announcements {
+        position: absolute;
+        top: calc(30% + 130px); /* Adjusted to stay under the login box */
+        left: 50%;
+        transform: translate(-50%, 0);
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.6); /* Matches login container transparency */
+        padding: 30px; /* Matches login container padding */
+        border-radius: 10px; /* Matches login container border radius */
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Matches login container shadow */
+        width: 250px; /* Adjusted width to match login container */
+        max-height: none; /* Allows it to expand naturally */
+        color: white;
+        font-size: 14px;
+        z-index: 1;
+      }
+
+      input[type="password"] {
+        font-size: 16px;
+        padding: 10px;
+        background-color: #222;
+        color: white;
+        border: 2px solid #00a6ff;
+        border-radius: 10px;
+        outline: none;
+        margin-top: 10px;
+        width: 200px;
+        text-align: center;
+      }
+
+      .quote-box {
+        color: white;
+        font-size: 14px;
+        margin-top: 15px;
+        padding: 8px;
+        border: 1px solid #00a6ff;
+        border-radius: 5px;
+        background-color: #111;
+      }
+
+      .iframe-container {
+        width: 100vw;
+        height: 100vh;
+        display: none;
+        z-index: 1;
+      }
+
+      iframe {
+        width: 100vw;
+        height: 100vh;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background div (replaces iframe) -->
+    <div id="background"></div>
+
+    <div class="auth-container">
+      <h2 style="color:white;">Welcome to MCclient</h2>
+      <input type="password" id="password-input" placeholder="URL" />
+      <div class="quote-box">"i'm not a minecraft sweat" -Richard</div>
+    </div>
+
+    <div class="iframe-container">
+      <iframe id="content-frame" loading="lazy"></iframe>
+    </div>
+
+    <div class="announcements">
+      <strong>Announcements</strong>
+      <ul>
+        <li>
+          Building submissisions due on March 3rd at 2:30 pm. Rating after
+          school.
+        </li>
+        <li>
+          Arnav and Brandon S need to come to one more after school meeting to
+          pass.
+        </li>
+        <li>
+          Alex Y and Harry D need to attend 2 after school meetings or talk to
+          me if you can't come.
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const background = document.getElementById("background");
+        const passwordInput = document.getElementById("password-input");
+        const authContainer = document.querySelector(".auth-container");
+        const iframeContainer = document.querySelector(".iframe-container");
+        const contentFrame = document.getElementById("content-frame");
+        const announcements = document.querySelector(".announcements");
+
+        // List of random background image URLs
+        const backgroundImages = [
+          "https://i.imgur.com/JYlZazO.png"
+        ];
+
+        // Select a random image from the list
+        const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+
+        // Set it as the background
+        background.style.backgroundImage = `url('${randomImage}')`;
+
+        const urls = {
+          "mc.runminecraft": "https://resent4-0.vercel.app/",
+          "mc.runanura": "https://anura.pro/",
+          "mc.rungames": "https://infinitetutoring.online/"
+        };
+
+        passwordInput.focus();
+        passwordInput.addEventListener("keypress", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            const password = passwordInput.value.trim();
+            if (urls[password]) {
+              // Hide the auth UI and announcements
+              authContainer.style.display = "none";
+              announcements.style.display = "none";
+
+              // Show the content iframe container and load the selected URL
+              iframeContainer.style.display = "flex";
+              contentFrame.src = urls[password];
+            } else {
+              alert("get out");
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
