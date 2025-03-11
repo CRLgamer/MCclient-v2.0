@@ -12,6 +12,9 @@
   - mc.runminecraft (Resent 4.0)
   - mc.runanura (Anura Client)
   - mc.rungames (infinitetutoring.online)
+  - mc.runssvid (YouTube Video Downloader)
+  - mc.rununblock (General Website Unblocker for School Chromebooks)
+  - mc.runproxy (Rammerhead Proxy)
 - New Transparent UI
 - Image Background
 
