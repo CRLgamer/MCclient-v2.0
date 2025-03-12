@@ -15,6 +15,7 @@
   - mc.runssvid (YouTube Video Downloader)
   - mc.rununblock (General Website Unblocker for School Chromebooks)
   - mc.runproxy (Rammerhead Proxy)
+  - mc.runminecraft1.12 (Eaglercraft 1.12)
 - New Transparent UI
 - Image Background
 
