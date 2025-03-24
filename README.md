@@ -10,12 +10,13 @@
 # Updates:
 - Special URL's
   - mc.runminecraft (Resent 4.0)
+  - mc.runminecraft1.12.2 (Eaglercraft 1.12)
+  - mc.runschoolserver (End City server)
   - mc.runanura (Anura Client)
   - mc.rungames (infinitetutoring.online)
   - mc.runssvid (YouTube Video Downloader)
   - mc.rununblock (General Website Unblocker for School Chromebooks)
   - mc.runproxy (Rammerhead Proxy)
-  - mc.runminecraft1.12 (Eaglercraft 1.12)
 - New Transparent UI
 - Image Background
 
