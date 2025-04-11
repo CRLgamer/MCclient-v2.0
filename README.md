@@ -17,6 +17,7 @@
   - mc.runssvid (YouTube Video Downloader)
   - mc.rununblock (General Website Unblocker for School Chromebooks)
   - mc.runproxy (Rammerhead Proxy)
+  - mc.runembed (Embed any link you want)
 - New Transparent UI
 - Image Background
 
