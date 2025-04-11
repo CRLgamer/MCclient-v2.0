@@ -21,7 +21,6 @@
         background-color: #000;
       }
 
-      /* Background div instead of iframe */
       #background {
         position: fixed;
         top: 0;
@@ -35,12 +34,12 @@
 
       .auth-container {
         position: absolute;
-        top: 30%; /* Adjusted for better centering */
+        top: 30%;
         left: 50%;
         transform: translate(-50%, -50%);
         text-align: center;
         background-color: rgba(0, 0, 0, 0.6);
-        padding: 30px; /* Increased padding to make it taller */
+        padding: 30px;
         border-radius: 10px;
         width: 250px;
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
@@ -49,16 +48,16 @@
 
       .announcements {
         position: absolute;
-        top: calc(30% + 130px); /* Adjusted to stay under the login box */
+        top: calc(30% + 130px);
         left: 50%;
         transform: translate(-50%, 0);
         text-align: center;
-        background-color: rgba(0, 0, 0, 0.6); /* Matches login container transparency */
-        padding: 30px; /* Matches login container padding */
-        border-radius: 10px; /* Matches login container border radius */
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Matches login container shadow */
-        width: 250px; /* Adjusted width to match login container */
-        max-height: none; /* Allows it to expand naturally */
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        width: 250px;
+        max-height: none;
         color: white;
         font-size: 14px;
         z-index: 1;
@@ -102,7 +101,6 @@
     </style>
   </head>
   <body>
-    <!-- Background div (replaces iframe) -->
     <div id="background"></div>
 
     <div class="auth-container">
@@ -136,15 +134,11 @@
         const contentFrame = document.getElementById("content-frame");
         const announcements = document.querySelector(".announcements");
 
-        // List of random background image URLs
         const backgroundImages = [
           "https://i.imgur.com/JYlZazO.png"
         ];
 
-        // Select a random image from the list
         const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
-
-        // Set it as the background
         background.style.backgroundImage = `url('${randomImage}')`;
 
         const urls = {
@@ -160,7 +154,7 @@
           "mc.runproxy": "https://rammerhead.command.enterprises/",
           "mc.runmovies": "https://ww19.0123movie.net/",
           "mc.runmovies2": "https://hdrezka.tv",
-          "mc.runembed": "",
+          "mc.runembed": "" // this one uses a prompt
         };
 
         passwordInput.focus();
@@ -168,14 +162,23 @@
           if (event.key === "Enter") {
             event.preventDefault();
             const password = passwordInput.value.trim();
-            if (urls[password]) {
-              // Hide the auth UI and announcements
+            if (urls[password] !== undefined) {
+              let targetURL = urls[password];
+
+              if (password === "mc.runembed") {
+                const userLink = prompt("Enter the link to embed:");
+                if (userLink) {
+                  targetURL = userLink.startsWith("http") ? userLink : "https://" + userLink;
+                } else {
+                  alert("Invalid link.");
+                  return;
+                }
+              }
+
               authContainer.style.display = "none";
               announcements.style.display = "none";
-
-              // Show the content iframe container and load the selected URL
               iframeContainer.style.display = "flex";
-              contentFrame.src = urls[password];
+              contentFrame.src = targetURL;
             } else {
               alert("get out");
             }
