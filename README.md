@@ -9,11 +9,13 @@
 
 # Updates:
 - Special URL's
-  - mc.runminecraft (Resent 4.0)
-  - mc.runminecraft1.12.2 (Eaglercraft 1.12)
-  - mc.runschoolserver (End City server)
+  - mc.runresent (Resent 5.0)
+  - mc.runastra (Astra Client 4.0)
+  - mc.rundragonx (DragonX Client 3.0)
+  - mc.run1.8 (Eaglercraft 1.8)
+  - mc.run1.12.2 (Eaglercraft 1.12)
   - mc.runanura (Anura Client)
-  - mc.rungames (infinitetutoring.online)
+  - mc.rungames (Games and stuff)
   - mc.runssvid (YouTube Video Downloader)
   - mc.rununblock (General Website Unblocker for School Chromebooks)
   - mc.runproxy (Rammerhead Proxy)
